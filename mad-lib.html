@@ -34,6 +34,28 @@
 		Sweet-peas drooped over the boxes, and the rose-bushes shot forth long branches, which were trained round the windows and clustered together almost like a triumphal arch of leaves and flowers. The boxes were very high, and the children knew they must not climb upon them, without permission, but they were often, however, allowed to step out together and sit upon their little stools under the rose-bushes, or play quietly. In winter all this pleasure came to an end, for the windows were sometimes quite frozen over. But then they would warm copper pennies on the stove, and hold the warm pennies against the frozen pane; there would be very soon a little round hole through which they could peep, and the soft bright eyes of the little boy and girl would beam through the hole at each window as they looked at each other. Their names were Kay and Gerda. In summer they could be together with one jump from the window, but in winter they had to go up and down the long staircase, and out through the snow before they could meet.
 		</p>
 		<script>
+		var placeholders = [
+			'size',
+			'quantity',
+			'noun-1',
+			'noun-2',
+			'number-1',
+			'number-2',
+			'relationship',
+			'verb',
+			'noun-3',
+			'adjective'
+		];
+		for (var i = 0; i < placeholders.length; i++){
+			var id = placeholders[i];
+			var span = document.getElementById(id);
+			var word = prompt('Please enter a' + span.innerHTML);
+			span.innerHTML = word;
+		}
+		
+		
+		/*
+		
 		
 		document.getElementById('size').innerHTML     	  = prompt('[1/10]Enter a size');
 		document.getElementById('quantity').innerHTML 	  = prompt('[2/10] Enter a quantity');
@@ -46,6 +68,8 @@
 		document.getElementById('noun-3').innerHTML       = prompt('[9/10] Enter a noun');
 		document.getElementById('adjective').innerHTML    = prompt('[10/10] Enter an adjective');
 		
+		
+		*/
 		</script>
 	</body>
 </html>
