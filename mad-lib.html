@@ -21,15 +21,15 @@
 		</style>
 	</head>
 	<body>
-		<p>In a <span id="size">(size)</span> town, <span id="quantity">(quantity)</span> 
-		of houses and people, there is no <span id="noun-1">(noun-1)</span> 
+		<p>In a <span id="size" data-prompt="size">_____</span> town, <span id="quantity" data-prompt="quantity">_____</span> 
+		of houses and people, there is no <span id="noun-1" data-prompt="noun-1">_____</span> 
 		for everybody to have even a little garden, therefore they are obliged to be satisfied with a few 
-		<span id="noun-2">(noun-2)</span> in flower-pots. In <span id="number-1">(number-1)</span> of these large towns lived 
-		<span id="number-2">(number-2)</span> poor children who had a garden something larger and better than a few flower-pots. 
-		They were not <span id="relationship">(relationship)</span>, but they <span id="verb">(verb)</span> each other almost as much as if they had been. 
+		<span id="noun-2" data-prompt="noun-2">_____</span> in flower-pots. In <span id="number-1" data-prompt="number-1">_____</span> of these large towns lived 
+		<span id="number-2" data-prompt="number-2">_____</span> poor children who had a garden something larger and better than a few flower-pots. 
+		They were not <span id="relationship" data-prompt="relationship">_____</span>, but they <span id="verb" data-prompt="verb">_____</span> each other almost as much as if they had been. 
 		Their parents lived opposite to each other in two garrets, where the roofs of neighboring houses projected out towards each other and the water-pipe ran between them. 
-		In each house was a little <span id="noun-3">(noun-3)</span>, so that any one could step across the gutter from one window to the other. 
-		The parents of these children had each a large <span id="adjective">(adjective)</span> box in which they cultivated kitchen herbs for their own use, and a little rose-bush in each box, which grew splendidly. 
+		In each house was a little <span id="noun-3" data-prompt="noun-3">_____</span>, so that any one could step across the gutter from one window to the other. 
+		The parents of these children had each a large <span id="adjective" data-prompt="adjective">_____</span> box in which they cultivated kitchen herbs for their own use, and a little rose-bush in each box, which grew splendidly. 
 		Now after a while the parents decided to place these two boxes across the water-pipe, so that they reached from one window to the other and looked like two banks of flowers. 
 		Sweet-peas drooped over the boxes, and the rose-bushes shot forth long branches, which were trained round the windows and clustered together almost like a triumphal arch of leaves and flowers. The boxes were very high, and the children knew they must not climb upon them, without permission, but they were often, however, allowed to step out together and sit upon their little stools under the rose-bushes, or play quietly. In winter all this pleasure came to an end, for the windows were sometimes quite frozen over. But then they would warm copper pennies on the stove, and hold the warm pennies against the frozen pane; there would be very soon a little round hole through which they could peep, and the soft bright eyes of the little boy and girl would beam through the hole at each window as they looked at each other. Their names were Kay and Gerda. In summer they could be together with one jump from the window, but in winter they had to go up and down the long staircase, and out through the snow before they could meet.
 		</p>
@@ -49,8 +49,17 @@
 		for (var i = 0; i < placeholders.length; i++){
 			var id = placeholders[i];
 			var span = document.getElementById(id);
+			span.addEventListener('click', replaceWord, false);
+		}
+		
+		function replaceWord(e) {
+			var span = e.target;
+			var wordPrompt = span.getAttribute('data-prompt');
 			var word = prompt('Please enter a' + span.innerHTML);
-			span.innerHTML = word;
+			if (word !== null) {
+				span.innerHTML = word;
+			}
+		
 		}
 		
 		
