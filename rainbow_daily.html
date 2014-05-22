@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<style>
+		body{
+			font-family:sans-serif;
+			text-align:center;
+			width: 650px;
+			height: 650px;
+			font-size: 18px;
+			margin-left: auto;
+  			margin-right: auto;
+		}
+		h1{
+			font-size:50px;
+		}
+		#nav{
+			text-align:left;
+			margin:40px auto;
+			width: 270px;
+			position:relative;
+			z-index: 20;
+		}
+		#nav ul ul{
+			display:none;
+		}
+		#nav ul li:hover > ul{
+			display:block;
+			margin:0px;
+		}
+		#nav ul li:hover > ul li{
+			float:none; 
+			display:block;}
+		#nav ul{
+			margin:0;
+			padding:0;
+			list-style:none;
+			position:relative;
+			display:inline-block;
+		}
+		#nav ul:after{
+			content:"";
+			clear:both;
+			display:block;
+		}
+		#nav ul li{
+			float:left;
+			padding-left: 20px;
+			padding-right: 30px;
+			position:relative;
+		}
+		#nav ul li ul{
+			position:absolute;
+			top:20px;
+			left:0px;
+		}
+		#nav ul li a{
+			display:block;
+			padding-top: 10px;
+		}
+
+		.box{
+			width: 650px;
+			height: 650px;
+			margin-left: auto;
+  			margin-right: auto;
+  			position:relative;
+  			top:50px;
+		}
+		a{
+			text-decoration:none;
+			font-size:14px; 
+		}
+		a:link {color:#2A9FFF;}      /* unvisited link */
+		a:visited {color:#17A6FF;}  /* visited link */
+		a:hover {color:#00FF39;}  /* mouse over link */
+		a:active {color:#E88C0C;}  /* selected link */
+
+		/*---date text size----*/
+		#date{
+			font-size:50px;
+			font-weight:bold;
+		}
+		.date{
+			text-align:center;
+			color:lightblue;
+		}
+
+		.colorviewer{
+			width:200px;
+			height:200px;
+		}
+		.grid, .colorviewer{
+			width:200px;
+			height:200px;
+			border:2px solid #FFE605;
+			border-radius:7px;
+			float:left; 
+			margin-left: 5px;
+			margin-top: 5px;
+	
+		}
+		</style>
+</head>
+<body>
+<h1>RAINBOW DAILY</h1>
+<div id="nav">
+	<ul>
+		<li><a href="#">DAY</a>
+			<ul>
+            	<li><a href="#">MONDAY</a></li>
+            	<li><a href="#">TUESDAY</a></li>
+            	<li><a href="#">WEDNESDAY</a></li>
+            	<li><a href="#">THURSDAY</a></li>
+            	<li><a href="#">FRIDAY</a></li>
+            	<li><a href="#">SATURSDAY</a></li>
+            	<li><a href="#">SUNDAY</a></li>
+        	</ul>
+    	</li>
+		<li><a href="#">MONTH</a>
+			<ul>
+            	<li><a href="#">JANUARY</a></li>
+            	<li><a href="#">FEBURAY</a></li>
+            	<li><a href="#">MARCH</a></li>
+            	<li><a href="#">APRIL</a></li>
+            	<li><a href="#">MAY</a></li>
+            	<li><a href="#">JUNE</a></li>
+            	<li><a href="#">JULY</a></li>
+            	<li><a href="#">AUGUST</a></li>
+            	<li><a href="#">SEPTEMBER</a></li>
+            	<li><a href="#">OCTOBER</a></li>
+            	<li><a href="#">NOVEMBER</a></li>
+            	<li><a href="#">DECEMBER</a></li>
+        	</ul>
+		</li>
+		<li><a href="#">YEAR</a></li>
+	</ul>
+</div>
+
+		<div id="date" class="grid" ><span class="date">MAY 19TH</span></div>
+		<div class="colorviewer"></div>
+		<canvas id="myCanvas" class="grid" width="200" height="200"></canvas>
+		<div id="2" class="grid" ><img src="images/05-20.jpg" width=200px height=200px></div>
+		<div id="3" class="grid" ><img src="images/05-21.jpg" width=200px height=200px></div>
+		<div id="4" class="grid" ><img src="images/05-22.jpg" width=200px height=200px></div>
+		<div id="5" class="grid" ><img src="images/05-23.jpg" width=200px height=200px></div>
+		<div id="6" class="grid" ><img src="images/05-24.jpg" width=200px height=200px></div>
+		<div id="7" class="grid" ><img src="images/05-25.jpg" width=200px height=200px></div>
+
+		<script>
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		var img = new Image();
+		img.onload = function() {
+			ctx.drawImage(img, 0, 0);
+		};
+		img.src = 'images/05-19.jpg';
+
+		window.addEventListener('mousemove', function(e) {
+  			var canvas = document.getElementById('myCanvas');
+  			var x = e.pageX - canvas.offsetLeft;
+  			var y = e.pageY - canvas.offsetTop;
+  			var ctx = canvas.getContext('2d');
+  			if (x > 0 && y > 0 && x < canvas.offsetWidth && y < canvas.offsetHeight) {
+    		var sample = ctx.getImageData(x, y, 1, 1);
+    		var colorviewer = document.getElementsByClassName('colorviewer')[0];
+    		console.log(colorviewer);
+    		colorviewer.style.backgroundColor = 'rgb(' + sample.data[0] + ', ' + sample.data[1] + ', ' + sample.data[2] + ')';
+  			}
+		}, false);
+		</script>
+	</body>
+</html>
